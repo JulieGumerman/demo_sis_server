@@ -1,10 +1,13 @@
 const express = require('express');
-const app = express();
+const fs = require('fs')
+const server = express();
 
-app.get('/',(req, res) => {
-    res.send({message: "Hello world!!!", food: "nom nom nom"})
+const fake_data = fs.readFileSync('./fake_user_data.json', 'utf-8')
+
+server.get('/',(req, res) => {
+    res.send({message: "Hello world!!!", food: "nom nom nom", user_data: JSON.parse(fake_data)})
 })
 
-app.listen(3333, () => {
+server.listen(3333, () => {
     console.log("I'm listening!!!")
 })
