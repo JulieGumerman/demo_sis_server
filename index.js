@@ -17,6 +17,8 @@ server.get('/balances/',(req, res) => {
     res.send({ user_data: JSON.parse(fake_balances_data)})
 })
 
-server.listen(3333, () => {
+const PORT = process.env.PORT || 3000
+
+server.listen(PORT, () => {
     console.log("I'm listening!!!")
 })
