@@ -1,9 +1,12 @@
 const express = require('express');
 const fs = require('fs')
 const server = express();
+const cors = cors()
 
 const fake_data = fs.readFileSync('./fake_user_data.json', 'utf-8')
 const fake_balances_data = fs.readFileSync('./fake_balances_data.json', 'utf-8')
+
+server.use(cors());
 
 server.get('/',(req, res) => {
     res.send({message: "Hello world!!!",})
